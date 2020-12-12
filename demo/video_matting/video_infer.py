@@ -65,7 +65,6 @@ while rval:
     # view_np = np.uint8(np.concatenate((frame_np, fg_np), axis=1))
     view_np = cv2.cvtColor(view_np, cv2.COLOR_RGB2BGR)
 
-    # view_np = cv2.cvtColor(frame_np, cv2.COLOR_RGB2BGR)
     path = './demo/out_real/' + str(filename) + '.png'
     cv2.imwrite(path, view_np)
     # cv2.imshow('MODNet - WebCam [Press \'Q\' To Exit]', view_np)
