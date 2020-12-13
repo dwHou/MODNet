@@ -57,8 +57,13 @@ while rval:
 
     matte_tensor = matte_tensor.repeat(1, 3, 1, 1)
     matte_np = matte_tensor[0].data.cpu().numpy().transpose(1, 2, 0)
-    fg_np = matte_np * frame_np + (1 - matte_np) * np.full(frame_np.shape, 255.0)
-
+    
+    green = np.zeros(frame_np.shape)
+    green[:, :, 1] = 255.0
+    
+    fg_np = matte_np * frame_np + (1 - matte_np) * green
+    # fg_np = matte_np * frame_np + (1 - matte_np) * np.full(frame_np.shape, 255.0)
+     
     print('matte_np {}, fg_np {}, frame_np {}'.format(matte_np.shape, fg_np.shape, frame_np.shape))
 
     view_np = np.uint8(matte_np*255.0)
