@@ -58,6 +58,14 @@ while rval:
     matte_tensor = matte_tensor.repeat(1, 3, 1, 1)
     matte_np = matte_tensor[0].data.cpu().numpy().transpose(1, 2, 0)
     
+    # 膨胀+腐蚀，使得边缘不那么硬，融入更自然。
+    kernel1 = np.ones((8, 8), np.uint8)
+    kernel2 = np.ones((12,12), np.uint8)
+    dilation = cv2.dilate(matte_np*255, kernel1)
+    erosion = cv2.erode(dilation, kernel2)
+    matte_np = erosion/255
+    
+    
     green = np.zeros(frame_np.shape)
     green[:, :, 1] = 255.0
     
