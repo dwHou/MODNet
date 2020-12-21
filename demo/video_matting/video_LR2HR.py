@@ -1,3 +1,6 @@
+# MODNet比较适合720p以下的任务，在面对较大尺寸前景时，会出现bad case。
+# 我们就通过得到小尺度mask，再进行插值，来减少bad case.
+
 import cv2
 import numpy as np
 from PIL import Image
