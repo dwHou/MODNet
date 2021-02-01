@@ -1,3 +1,5 @@
+<h3 align="center">Notes: 目前的模型，输入尺寸越小，对于复杂背景，扣得越干净。</h3>
+
 <h2 align="center">MODNet: Is a Green Screen Really Necessary for Real-Time Portrait Matting?</h2>
 
 <img src="doc/gif/homepage_demo.gif" width="100%">
